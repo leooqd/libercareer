@@ -1,0 +1,17 @@
+# encoding: UTF-8
+pt-BR:
+  transaction_type:
+    description:
+      debit: "Débito"
+      bill: "Boleto"
+      financing: "Financiamento"
+      credit: "Crédito"
+      loan_receipt: "Recebimento Empréstimo "
+      sales: "Vendas"
+      ted_receipt: "Recebimento TED"
+      doc_receipt: "Recebimento DOC"
+      rent: "Aluguel"
+    kind:
+      cash_in: "Entrada" 
+      cash_out: "Saída"
+

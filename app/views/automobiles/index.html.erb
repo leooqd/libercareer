@@ -1,0 +1,63 @@
+<div class="card">
+	<div class="card-content">
+		<%= form_for automobiles_path, url: automobiles_path, remote: true, method: :get, html: { id: :automobiles_filter_form } do |f| %>
+			<div class="row">
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :codigo, id: "codigo", name: :codigo  %>
+						<label class="active" for="codigo">Código</label>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :model, id: "model", name: :model  %>
+						<label class="active" for="model">Modelo</label>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :license_plate, id: "license_plate", name: :license_plate  %>
+						<label class="active" for="license_plate">Placa</label>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :color, id: "color", name: :color  %>
+						<label class="active" for="color">Cor</label>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :kind, id: "kind", name: :kind  %>
+						<label class="active" for="kind">Tipo</label>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :min, id: "min", name: :min, value: 0  %>
+						<label class="active" for="min">Valor Mínimo</label>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :max, id: "max", name: :max, value: 9999999  %>
+						<label class="active" for="max">Valor Máximo</label>
+					</div>
+				</div>
+				<div class="col s12 m12 l12">
+					<div class="action  ">
+						<button type="submit" class="btn shadow blue right">Buscar</button>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+<div class="card">
+	<div class="card-content">
+		<%= link_to "Novo", new_automobile_path, class: "btn green" %>
+		<div id="automobiles_list">
+			<%= render "list" %>
+		</div>
+	</div>
+</div>

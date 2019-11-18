@@ -1,0 +1,2 @@
+$("#rents_list").html("<%= j( render 'list' )%>");
+M.toast({html: '<%= pluralize(@rents.size, "resultado", "resultados") %>', classes: 'grey'});

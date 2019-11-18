@@ -31,3 +31,19 @@
 
 en:
   hello: "Hello world"
+
+  transaction_type:
+    description:
+      debit: "Debit"
+      bill: "Bill"
+      financing: "Financing"
+      credit: "Credit"
+      loan_receipt: "Loan Receipt"
+      sales: "Sales"
+      ted_receipt: "Ted Receipt"
+      doc_receipt: "Doc Receipt"
+      rent: "Rent"
+    kind:
+      cash_in: "Cash In" 
+      cash_out: "Cash Out"
+

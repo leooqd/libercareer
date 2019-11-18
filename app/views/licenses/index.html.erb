@@ -1,0 +1,33 @@
+<div class="card">
+	<div class="card-content">
+		<%= form_for licenses_path, url: licenses_path, remote: true, method: :get, html: { id: :licenses_filter_form } do |f| %>
+			<div class="row">
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :codigo, id: "codigo", name: :codigo  %>
+						<label class="active" for="codigo">Código</label>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.text_field :number, id: "number", name: :number  %>
+						<label class="active" for="number">Número</label>
+					</div>
+				</div>
+				<div class="col s12 m12 l12">
+					<div class="action  ">
+						<button type="submit" class="btn shadow blue right">Buscar</button>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+<div class="card">
+	<div class="card-content">
+		<%= link_to "Novo", new_license_path, class: "btn green" %>
+		<div id="licenses_list">
+			<%= render "list" %>
+		</div>
+	</div>
+</div>

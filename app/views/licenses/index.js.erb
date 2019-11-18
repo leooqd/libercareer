@@ -1,0 +1,2 @@
+$("#licenses_list").html("<%= j( render 'list' )%>");
+M.toast({html: '<%= pluralize(@licenses.size, "resultado", "resultados") %>', classes: 'grey'});

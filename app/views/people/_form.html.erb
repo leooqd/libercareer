@@ -1,0 +1,63 @@
+<%= form_for [@person], remote: true, multiple: true do |f| %>
+	<div class="row">
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :name %>
+			<label for="person_name">Nome</label>
+		</div>
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :last_name %>
+			<label for="person_last_name">Sobrenome</label>
+		</div>
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :email %>
+			<label for="person_email">E-mail</label>
+		</div>
+		<div class="input-field col s12 m6 l6">
+			<%= f.text_field :birth_date, type: "date" %>
+			<label for="person_birth_date">Data de Nascimento</label>
+		</div>
+		<div class="input-field col s12 m6 l6">
+			<%= f.text_field :document %>
+			<label for="person_last_document">Documento</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12 l12">
+			<h5 class="orange-text f20">Adicionar Telefone</h5>
+			<div class="input-field">
+				<%= f.fields_for :phones do |phone| %>
+					<%= render 'phone_fields', f: phone %>
+				<% end %>
+			</div>
+			<div class="form-group">
+				<%= link_to_add_association "<i class='material-icons'>add</i>".html_safe, f, :phones, class: 'btn green' %>
+			</div>
+		</div>
+	</div>
+	<h5 class="blue-text f20">Habilitação</h5>
+	<div class="card">
+		<div class="card-content">
+			<div class="row">
+				<%= f.fields_for :license do |l| %>
+					<div class="input-field col s12 m6 l4">
+						<%= l.text_field :number %>
+						<label for="license_number">Número</label>
+					</div>
+					<div class="input-field col s12 m6 l4">
+						<%= l.text_field :expiration, type: "date" %>
+						<label for="license_expiration">Validade</label>
+					</div>
+					<div class="input-field col s12 m6 l4">
+						<%= l.collection_select :modalities_ids, Modality.all, :id, :category, {:include_hidden => true}, {multiple: true} %>
+						<%= l.label :modalities_ids, "Modalidades" %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="action">
+			<button type="submit" class="btn blue right"><%= @person.new_record? ? 'Criar' : 'Atualizar' %></button>
+		</div>
+	</div>
+<% end %>

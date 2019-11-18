@@ -1,0 +1,45 @@
+<nav>
+	<div class="nav-wrapper container">
+		<a href="/" class="brand-logo ajax_logo animated flip"><img src="/images/icon.png" class="img-fluid width-64 height-64"></a>
+		<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		<ul class="right hide-on-med-and-down">
+			<% if current_user %>
+				<li>
+					<%= link_to "Locação", rents_path %>
+				</li>
+				<li>
+					<%= link_to "Pessoas", people_path %>
+				</li>
+				<li>
+					<%= link_to "Automóveis", automobiles_path %>
+				</li>
+				<li>
+					<%= link_to "Habilitações", licenses_path %>
+				</li>
+				<li>
+					<%= link_to "<i class='material-icons #{'menu-icon' if current_page?destroy_user_session_path}'>exit_to_app</i> <span class='hide-on-large-only'>Sair</span>".html_safe, destroy_user_session_path, class: "tooltipped", 'data-tooltip' => "Sair", :method => :delete, "data-position" =>"right" %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+	<% if current_user %>
+		<li>
+			<%= link_to "Locação", rents_path %>
+		</li>
+		<li>
+			<%= link_to "Pessoas", people_path %>
+		</li>
+		<li>
+			<%= link_to "Automóveis", automobiles_path %>
+		</li>
+		<li>
+			<%= link_to "Habilitações", licenses_path %>
+		</li>
+		<li>
+			<%= link_to "<i class='material-icons #{'menu-icon' if current_page?destroy_user_session_path}'>exit_to_app</i> <span class='hide-on-large-only'>Sair</span>".html_safe, destroy_user_session_path, class: "tooltipped", 'data-tooltip' => "Sair", :method => :delete, "data-position" =>"right" %>
+		</li>
+	<% end %>
+</ul>

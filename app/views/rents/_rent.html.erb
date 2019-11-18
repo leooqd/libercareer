@@ -1,0 +1,25 @@
+<tr>
+	<td>
+		<%= rent.person.full_name %>
+	</td>
+	<td>
+		<%= rent.automobile.full_description %>
+	</td>
+	<td>
+		<%= rent.start_date %>
+	</td>
+	<td>
+		<%= rent.end_date %>
+	</td>
+	<td>
+		<%= rent.pickup_date %>
+	</td>
+	<td>
+		<%= rent.delivery_date %>
+	</td>
+	<td>
+		<%= link_to edit_rent_path(rent) do %>
+			<i class="material-icons f20">edit</i>
+		<% end %>
+	</td>
+</tr>

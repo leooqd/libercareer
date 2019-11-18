@@ -8,4 +8,15 @@ module ApplicationHelper
 	def devise_mapping
 		@devise_mapping ||= Devise.mappings[:user]
 	end
+	def person_license_valid person
+		begin
+			if person.blank? or person.license.blank? or person.license.expiration.to_date < Date.today
+				"<i class='material-icons red-text f20'>close</i>".html_safe
+			else
+				"<i class='material-icons green-text f20'>check</i>".html_safe
+			end
+		rescue
+			"<i class='material-icons red-text f20'>close</i>".html_safe
+		end
+	end
 end

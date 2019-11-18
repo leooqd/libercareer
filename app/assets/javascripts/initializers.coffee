@@ -1,12 +1,9 @@
-
-$ ->
-  $(document).ajaxStart ->
-    $('.ajax_logo').addClass 'infinite'
-    return
-  $(document).ajaxStop ->
-    $('.ajax_logo').removeClass 'infinite'
-    return
+$(document).on 'turbolinks:load', ->
+  $('select').formSelect()
+  M.updateTextFields()
   return
-$(document).ready ->
-  $('.ajax_logo').removeClass 'infinite'
+
+$(document).on 'turbolinks:before-cache', ->
+  $('select').formSelect('destroy')
+  M.updateTextFields()
   return

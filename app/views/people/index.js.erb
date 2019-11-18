@@ -1,0 +1,2 @@
+$("#people_list").html("<%= j( render 'list' )%>");
+M.toast({html: '<%= pluralize(@people.size, "resultado", "resultados") %>', classes: 'grey'});

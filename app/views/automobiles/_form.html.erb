@@ -1,0 +1,34 @@
+<%= form_for [@automobile], remote: true do |f| %>
+	<div class="row">
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :color %>
+			<label for="automobile_color">Cor</label>
+		</div>
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :model %>
+			<label for="automobile_model">Modelo</label>
+		</div>
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :year %>
+			<label for="automobile_year">Ano</label>
+		</div>
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :license_plate %>
+			<label for="automobile_license_plate">Placa</label>
+		</div>
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :kind %>
+			<label for="automobile_kind">Tipo</label>
+		</div>
+		<div class="input-field col s12 m6 l4">
+			<%= f.text_field :cost %>
+			<label for="automobile_cost">Custo</label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="action">
+			<button type="submit" class="btn blue right"><%= @automobile.new_record? ? 'Criar' : 'Atualizar' %></button>
+		</div>
+	</div>
+<% end %>

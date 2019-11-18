@@ -1,0 +1,48 @@
+$liber-color: #019DFF;
+
+nav{
+	background-color: $liber-color;
+	a{
+		&:hover{
+			text-shadow: 0 0 10px white;
+		}
+	}
+}
+.liber-color{
+	background-color: $liber-color;
+	color: #fff;
+}
+.liber-color-text{
+	color: $liber-color;
+}
+.img-fluid{
+	max-width: 100%;
+	height: auto;
+}
+.width-64{
+	width: 64px;
+}
+.width-100{
+	width: 100px;
+}
+.height-64{
+	height: 64px;
+}
+.container-fluid{
+	margin: 15px;
+	padding: 15px;
+}
+.container-fluid-no-side{
+	margin: 15px 0;
+	padding: 15px 0;	
+}
+.radius-25{
+	border-radius: 25px;
+}
+
+.f12{
+	font-size: 12px;
+}
+.f20{
+	font-size: 20px;
+}

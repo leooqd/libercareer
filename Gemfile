@@ -21,6 +21,8 @@ gem "material_icons"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'colorize'
 gem "animate-rails"
+gem "cpf_cnpj"
+gem "cocoon"
 # ~ 
 
 gem 'bootsnap', '>= 1.4.2', require: false

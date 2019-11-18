@@ -1,26 +1,40 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l8 offset-l2">
+    <br>
+    <h5>
+      <a class="brand-logo logo blue-text center">
+        <center>
+          <img src="/images/logo.png" class="img-fluid width-100 radius-25"> <br>
+        Seja bem vindo! <br>
+        </center>
+      </a>
+    </h5>
+      <div class="card">
+        <div class="card-image center">
+          <span class="grey-text text-darken-2">
+          <br>
+            Digite seu e-mail e senha para iniciar.
+          </span>
+        </div>
+        <div class="card-content">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, class: "email", value: "teste@teste.com" %>
+            </div>
+            <div class="field">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, class: "password", value: "teste"  %>
+            </div>
+            <br>
+            <div class="actions">
+              <%= f.submit "Entrar", class: "btn custom blue"  %>
+            </div>
+          <% end %>
+        </div>
+        <br>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

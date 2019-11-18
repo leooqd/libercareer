@@ -1,0 +1,38 @@
+<div class="nested-fields">
+	<div class="card">
+		<div class="card-content">
+			<div class="row">
+				<div class="col s12 m12 l6">
+					<div class="row">
+						<div class="col s12 m12 l3">
+							<div class="input-field">
+								<%= f.text_field :ddd, maxlength: 2, placeholder: "DDD" %>
+							</div>
+						</div>
+						<div class="col s12 m12 l9">
+							<div class="input-field">
+								<%= f.text_field :number, maxlength: 9, placeholder: "Número" %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m12 l5">
+					<div class="input-field">
+						<%= f.text_field :kind %>
+						<label class="active">Tipo</label>
+					</div>
+				</div>
+				<div class="col s12 m12 l1">
+					<div class="field ">
+						<div class="form-group border-top">
+							<% unless @person.new_record? %>
+								<%= link_to "<i class='material-icons amber-text'>#{f.object == @person.preferred_phone ? 'star' : 'star_border'}</i>".html_safe, people_set_preferred_path(id: @person.id, phone_id: f.object.id), class: "btn white", method: "post" %>
+							<% end %>
+							<%= link_to_remove_association "<i class='material-icons white-text'>delete_sweep</i>".html_safe, f, class: 'btn  red darken-1' %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

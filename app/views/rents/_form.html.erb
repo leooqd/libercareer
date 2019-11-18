@@ -1,0 +1,17 @@
+<%= form_for [@rent], remote: true do |f| %>
+	<div class="row">
+		<div class="input-field col s12 m12 l6">
+			<%= f.collection_select :person_id, Person.all, :id, :full_name, { prompt: "Selecione" } %>
+			<%= f.label :person, "Cliente" %>
+		</div>
+		<div class="input-field col s12 m6 l6">
+			<%= f.collection_select :automobile_id, Automobile.all, :id, :full_description, {:include_hidden => true} %>
+			<%= f.label :automobile_id, "Automóvel" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="action">
+			<button type="submit" class="btn blue right"><%= @rent.new_record? ? 'Criar' : 'Atualizar' %></button>
+		</div>
+	</div>
+<% end %>

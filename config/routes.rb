@@ -5,6 +5,14 @@ Rails.application.routes.draw do
 		get '/home' => :home
 	end
 
+	controller :people do
+		post '/people/set_preferred/:id' => :set_preferred, as: :people_set_preferred
+	end
+	resources :people
+	resources :automobiles
+	resources :licenses
+	resources :rents
+
 	root "pages#home"  
 	get '*path' => redirect('/')
 end
