@@ -1,0 +1,8 @@
+development:
+  adapter: redis
+  url: redis://redis:6379
+test:
+  adapter: test
+production:
+  adapter: redis
+  url: redis://redistogo:eb5c81c416577f1831a9f1e3635c825e@hammerjaw.redistogo.com:11230/
