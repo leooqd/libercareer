@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_215447) do
     t.date "start_date"
     t.date "end_date"
     t.date "pickup_date"
-    t.date "delivery_date"
+    t.date "return_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["automobile_id"], name: "index_rents_on_automobile_id"

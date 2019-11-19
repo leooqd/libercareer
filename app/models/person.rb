@@ -11,6 +11,7 @@ class Person < ApplicationRecord
 	validates_uniqueness_of :document
 
 	scope :ordered, -> {order("people.created_at desc")}
+	scope :order_name, -> {order("people.name asc")}
 
 	after_commit :set_preferred_phone, if: -> { self.preferred_phone.blank? and self.phones.any? }
 

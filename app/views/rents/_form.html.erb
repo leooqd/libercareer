@@ -1,17 +1,65 @@
 <%= form_for [@rent], remote: true do |f| %>
 	<div class="row">
 		<div class="input-field col s12 m12 l6">
-			<%= f.collection_select :person_id, Person.all, :id, :full_name, { prompt: "Selecione" } %>
+			<%= f.collection_select :person_id, Person.all.order_name, :id, :full_name, { prompt: "Selecione" } %>
 			<%= f.label :person, "Cliente" %>
 		</div>
 		<div class="input-field col s12 m6 l6">
-			<%= f.collection_select :automobile_id, Automobile.all, :id, :full_description, {:include_hidden => true} %>
+			<%= f.collection_select :automobile_id, Automobile.all, :id, :full_description, { prompt: "Selecione" }, {id: "select_automobile"} %>
 			<%= f.label :automobile_id, "Automóvel" %>
 		</div>
+		<div class="input-field col s12 m6 l6">
+			<%= f.text_field :start_date, type: "date", id: "start_date" %>
+			<%= f.label :start_date, "Data de Início" %>
+		</div>
+		<div class="input-field col s12 m6 l6">
+			<%= f.text_field :end_date, type: "date", id: "end_date" %>
+			<%= f.label :end_date, "Data de Término" %>
+		</div>
+		<div class="input-field col s12 m6 l6">
+			<%= f.text_field :cost, placeholder: "R$", :readonly => "true", id: "cost" %>
+			<%= f.label :cost, "Custo" %>
+		</div>
+		<div class="col s12 m6 l6">
+			<a id="calculate_cost" class="btn purple">Calcular</a>
+		</div>
 	</div>
+	<% unless @rent.new_record? %>
+		<div class="row">
+			<div class="input-field col s12 m6 l6">
+				<%= f.text_field :pickup_date, type: "date", id: "pickup_date" %>
+				<%= f.label :pickup_date, "Data de Retirada" %>
+			</div>
+			<div class="input-field col s12 m6 l6">
+				<%= f.text_field :return_date, type: "date", id: "return_date" %>
+				<%= f.label :return_date, "Data de Entrega" %>
+			</div>
+		</div>
+	<% end %>
 	<div class="row">
 		<div class="action">
 			<button type="submit" class="btn blue right"><%= @rent.new_record? ? 'Criar' : 'Atualizar' %></button>
 		</div>
 	</div>
 <% end %>
+
+<script type="text/javascript">
+	$("#calculate_cost").click(function(){
+		var automobile_id = $("#select_automobile").val();
+		var start_date = $("#start_date").val();
+		var end_date = $("#end_date").val();
+		$.ajax( {
+			url: "/rents/calculate_cost",
+			method: "get",
+			dataType: "script",
+			data: {
+				'automobile_id': 		automobile_id,
+				'start_date': 		start_date,
+				'end_date': 		end_date
+			},
+			error: function(e){
+				return M.toast({html: 'Não foi possível fazer a requisição. (Code: '+e.status+')', classes: 'red'});
+			}
+		});
+	});
+</script>

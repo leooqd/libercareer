@@ -1,0 +1,5 @@
+<% if @erro.present? %>
+	M.toast({html: 'Não foi possível fazer a requisição. (<%= @erro %>)', classes: 'red'});
+<% else %>
+	$("#cost").val("<%= @cost %>");
+<% end %>

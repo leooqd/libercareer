@@ -1,5 +1,5 @@
 class RentsController < ApplicationController
-	before_action :set_rent, only: [:show, :edit, :update, :destroy]
+	before_action :set_rent, only: [:show, :edit, :update, :destroy, :pickup_car, :return_car]
 
 	def index
 		conditions = []
@@ -8,6 +8,21 @@ class RentsController < ApplicationController
 	end
 
 	def edit
+	end
+
+	def pickup_car
+		@rent.pickup!
+	end
+
+	def return_car
+		@rent.return!
+	end
+
+	def calculate_cost
+		begin
+			@cost = get_cost(params[:start_date].to_date, params[:end_date].to_date, Automobile.find(params[:automobile_id]).cost)
+		rescue Exception => @erro
+		end
 	end
 
 	def update

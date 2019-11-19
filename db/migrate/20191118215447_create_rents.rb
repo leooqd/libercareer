@@ -7,7 +7,7 @@ class CreateRents < ActiveRecord::Migration[5.2]
     	t.date 						:start_date
     	t.date 						:end_date
     	t.date 						:pickup_date
-    	t.date 						:delivery_date
+    	t.date 						:return_date
       t.timestamps
     end
   end

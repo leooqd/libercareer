@@ -34,14 +34,14 @@ Modality.create(category: "Categoria D", description: "Veículos utilizados no t
 Modality.create(category: "Categoria E", description: "Todos os veículos das categorias B, C ou D e cuja unidade acoplada, reboque, semi reboque, trailer ou articulada tenha 6.000 kg ou mais de peso bruto total, ou cuja lotação exceda a 8 lugares. Condutor de combinação de veículos com mais de uma unidade tracionada, independentemente da capacidade de tração ou do peso bruto total. Ex.: Veículo com dois reboques acoplados.")
 Modality.create(category: "Categoria ACC", description: "Veículos de duas ou três rodas com potência de até 50 cilindradas. Ex: Ciclomotores.")
 puts "#{Modality.count} Modalidades cadastradas".green
-License.create(person_id: 1, number: 7195601426, modalities_ids: [1,2], expiration: "02/12/2013")
-License.create(person_id: 2, number: 6943716123, modalities_ids: [1,3], expiration: "02/12/2013")
-License.create(person_id: 3, number: 1180791711, modalities_ids: [2], expiration: "02/12/2013")
-License.create(person_id: 4, number: 4022223573, modalities_ids: [5], expiration: "02/12/2013")
-License.create(person_id: 5, number: 4792176902, modalities_ids: [4], expiration: "02/12/2013")
-License.create(person_id: 6, number: 1910131222, modalities_ids: [1,2], expiration: "02/12/2013")
-License.create(person_id: 7, number: 6892136432, modalities_ids: [1], expiration: "02/12/2013")
+License.create(person_id: 1, number: 7195601426, modalities_ids: [1,2], expiration: "02/12/2023")
+License.create(person_id: 2, number: 6943716123, modalities_ids: [1,3], expiration: "02/12/2022")
+License.create(person_id: 3, number: 1180791711, modalities_ids: [2], expiration: "02/12/2024")
+License.create(person_id: 4, number: 4022223573, modalities_ids: [5], expiration: "02/12/2023")
+License.create(person_id: 5, number: 4792176902, modalities_ids: [4], expiration: "02/12/2023")
+License.create(person_id: 6, number: 1910131222, modalities_ids: [1,2], expiration: "02/12/2023")
+License.create(person_id: 7, number: 6892136432, modalities_ids: [1], expiration: "02/12/2019")
 puts "#{License.count} Habilitações cadastradas".green
-Rent.create(person_id: 2, automobile_id: 2, cost: 199.98, start_date: "07/11/2019", end_date: "09/11/2019", pickup_date: "07/11/20198", delivery_date: "09/11/2019")
-Rent.create(person_id: 4, automobile_id: 3, cost: 399.98, start_date: "07/11/2019", end_date: "09/11/2019", pickup_date: "07/11/20198", delivery_date: "09/11/2019")
+Rent.create(person_id: 2, automobile_id: 2, cost: 199.98, start_date: "07/11/2019", end_date: "09/11/2019", pickup_date: "07/11/2019", return_date: "09/11/2019")
+Rent.create(person_id: 4, automobile_id: 3, cost: 399.98, start_date: "07/11/2019", end_date: "09/11/2019", pickup_date: "07/11/2019", return_date: "09/11/2019")
 puts "#{Rent.count} Locações cadastradas".green

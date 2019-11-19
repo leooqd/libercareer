@@ -3,19 +3,30 @@
 		<%= rent.person.full_name %>
 	</td>
 	<td>
-		<%= rent.automobile.full_description %>
+		<%= rent.automobile.model %>
 	</td>
 	<td>
-		<%= rent.start_date %>
+		<%= custom_date rent.start_date %>
 	</td>
 	<td>
-		<%= rent.end_date %>
+		<%= custom_date rent.end_date %>
 	</td>
 	<td>
-		<%= rent.pickup_date %>
+		<% if rent.pickup_date.blank? %>
+			<%= link_to "Retirar", rents_pickup_car_path(rent), class: "btn small green", method: "post", remote: true, data: { confirm: "Você tem certeza?" } %>
+		<% else %>
+			<%= custom_date rent.pickup_date %>
+		<% end %>
 	</td>
 	<td>
-		<%= rent.delivery_date %>
+		<% if rent.return_date.blank? %>
+			<%= link_to "Entregar", rents_return_car_path(rent), class: "btn small green", method: "post", remote: true, data: { confirm: "Você tem certeza?" }, disabled: rent.pickup_date.blank? %>
+		<% else %>
+			<%= custom_date rent.return_date %>
+		<% end %>
+	</td>
+	<td class="green-text">
+		<%= "R$ #{rent.cost}" %>
 	</td>
 	<td>
 		<%= link_to edit_rent_path(rent) do %>
