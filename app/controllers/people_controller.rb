@@ -3,12 +3,9 @@ class PeopleController < ApplicationController
 	before_action :set_person, only: [:show, :edit, :update, :destroy, :set_preferred]
 
 	def index
-		conditions = []
-		conditions << "UPPER(unaccent(people.name)) LIKE '%#{I18n.transliterate(params[:name].upcase)}%'" unless params[:name].blank?
-		conditions << "UPPER(unaccent(people.email)) LIKE '%#{I18n.transliterate(params[:email].upcase)}%'" unless params[:email].blank?
-		conditions << "UPPER(unaccent(people.document)) LIKE '%#{I18n.transliterate(params[:document].upcase)}%'" unless params[:document].blank?
-		conditions << "people.id = #{params[:codigo]}" unless params[:codigo].blank?
-		@people = Person.where(conditions.join(" AND ")).ordered
+		@q = Person.ransack(params[:q])
+		@people = @q.result
+		filter_by_modalities if params.dig(:q, :license, :modalities_ids)
 	end
 
 	def edit
@@ -53,6 +50,10 @@ class PeopleController < ApplicationController
 	end
 
 	private
+	def filter_by_modalities
+		array = params[:q][:license][:modalities_ids]&.reject!(&:blank?)
+		@people = @people.where(id: License.where("modalities_ids @> ARRAY[?]::integer[]", array).select {|s| s.person_id}) if array.present?
+	end
 
 	def set_person
 		@person = Person.find(params[:id])

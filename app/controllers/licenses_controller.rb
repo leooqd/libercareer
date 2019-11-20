@@ -3,10 +3,9 @@ class LicensesController < ApplicationController
 	before_action :set_license, only: [:show, :edit, :update, :destroy]
 
 	def index
-		conditions = []
-		conditions << "UPPER(unaccent(licenses.number)) LIKE '%#{I18n.transliterate(params[:number].upcase)}%'" unless params[:number].blank?
-		conditions << "licenses.id = #{params[:codigo]}" unless params[:codigo].blank?
-		@licenses = License.where(conditions.join(" AND ")).ordered
+		@q = License.ransack(params[:q])
+		@licenses = @q.result
+		filter_by_modalities if params.dig(:q, :modalities_ids)
 	end
 
 	def edit
@@ -38,6 +37,10 @@ class LicensesController < ApplicationController
 	end
 
 	private
+	def filter_by_modalities
+		array = params[:q][:modalities_ids]&.reject!(&:blank?)
+		@licenses = @licenses.where("modalities_ids @> ARRAY[?]::integer[]", array) if array.present?
+	end
 
 	def set_license
 		@license = License.find(params[:id])

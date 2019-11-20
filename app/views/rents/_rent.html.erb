@@ -29,6 +29,9 @@
 		<%= "R$ #{rent.cost}" %>
 	</td>
 	<td>
+		<%= status(rent) %>
+	</td>
+	<td>
 		<%= link_to edit_rent_path(rent) do %>
 			<i class="material-icons f20">edit</i>
 		<% end %>

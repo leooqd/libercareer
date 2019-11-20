@@ -1,35 +1,51 @@
 <div class="card">
 	<div class="card-content">
-		<%= form_for people_path, url: people_path, remote: true, method: :get, html: { id: :people_filter_form } do |f| %>
+		<%= search_form_for @q, remote: true do |f| %>
 			<div class="row">
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :codigo, id: "codigo", name: :codigo  %>
-						<label class="active" for="codigo">Código</label>
+						<%= f.search_field :id_eq  %>
+						<%= f.label :id_eq, "Código" %>
 					</div>
 				</div>
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :name, id: "name", name: :name  %>
-						<label class="active" for="name">Nome</label>
+						<%= f.search_field :name_or_last_name_cont  %>
+						<%= f.label :name_or_last_name_cont, "Nome" %>
 					</div>
 				</div>
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :email, id: "email", name: :email  %>
-						<label class="active" for="email">E-mail</label>
+						<%= f.search_field :email_cont  %>
+						<%= f.label :email_cont, "E-mail" %>
 					</div>
 				</div>
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :document, id: "document", name: :document  %>
-						<label class="active" for="document">Documento</label>
+						<%= f.search_field :document_cont  %>
+						<%= f.label :document_cont, "Document" %>
 					</div>
 				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m12 l3">
+					<div class="input-field">
+						<%= f.search_field :age_lteq  %>
+						<%= f.label :age_lteq, "Idade maior que" %>
+					</div>
+				</div>
+				<div class="col s12 m6 l3">
+					<%= f.fields_for :license do |l| %>
+						<div class="input-field">
+							<%= l.collection_select :modalities_ids, Modality.all, :id, :category, {:include_hidden => true}, {multiple: true} %>
+							<%= l.label :modalities_ids, "Modalidades" %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="row">
 				<div class="col s12 m12 l12">
-					<div class="action  ">
-						<button type="submit" class="btn shadow blue right">Buscar</button>
-					</div>
+					<%= f.submit 'buscar', :class => 'btn shadow blue right', :id => "buscar" %>
 				</div>
 			</div>
 		<% end %>

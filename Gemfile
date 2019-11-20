@@ -23,6 +23,7 @@ gem 'colorize'
 gem "animate-rails"
 gem "cpf_cnpj"
 gem "cocoon"
+gem 'ransack'
 # ~ 
 
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,3 +1,7 @@
+<div class="right">
+	<strong class="grafit-text f20">Custo Total: </strong>
+	<span class="green-text f20"><%= @rents.sum("cost") %></span>
+</div>
 <table class="striped responsive-table f12">
 	<thead>
 		<tr>
@@ -8,6 +12,7 @@
 			<th>Retirada</th>
 			<th>Entrega</th>
 			<th>Custo</th>
+			<th>Status</th>
 			<th>#</th>
 		</tr>
 	</thead>

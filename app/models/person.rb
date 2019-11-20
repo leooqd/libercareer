@@ -12,6 +12,15 @@ class Person < ApplicationRecord
 
 	scope :ordered, -> {order("people.created_at desc")}
 	scope :order_name, -> {order("people.name asc")}
+	scope :age_between, lambda{|from_age, to_age|
+		if from_age.present? and to_age.present?
+			where( :birth_date =>  (Date.today - to_age.to_i.year)..(Date.today - from_age.to_i.year) )
+		end
+	}
+
+	ransacker :age, :formatter => proc {|v| Date.today - v.to_i.year} do |parent|
+		parent.table[:birth_date]
+	end
 
 	after_commit :set_preferred_phone, if: -> { self.preferred_phone.blank? and self.phones.any? }
 

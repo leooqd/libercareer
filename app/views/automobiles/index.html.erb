@@ -1,53 +1,55 @@
 <div class="card">
 	<div class="card-content">
-		<%= form_for automobiles_path, url: automobiles_path, remote: true, method: :get, html: { id: :automobiles_filter_form } do |f| %>
+		<%= search_form_for @q, remote: true do |f| %>
 			<div class="row">
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :codigo, id: "codigo", name: :codigo  %>
-						<label class="active" for="codigo">Código</label>
+						<%= f.search_field :id_eq  %>
+						<%= f.label :id_eq, "Código" %>
 					</div>
 				</div>
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :model, id: "model", name: :model  %>
-						<label class="active" for="model">Modelo</label>
+						<%= f.search_field :model_cont  %>
+						<%= f.label :model_cont, "Modelo" %>
 					</div>
 				</div>
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :license_plate, id: "license_plate", name: :license_plate  %>
-						<label class="active" for="license_plate">Placa</label>
+						<%= f.search_field :license_plate_cont  %>
+						<%= f.label :license_plate_cont, "Placa" %>
 					</div>
 				</div>
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :color, id: "color", name: :color  %>
-						<label class="active" for="color">Cor</label>
+						<%= f.search_field :color_cont  %>
+						<%= f.label :color_cont, "Cor" %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<%= f.search_field :kind_cont  %>
+						<%= f.label :kind_cont, "Tipo" %>
 					</div>
 				</div>
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :kind, id: "kind", name: :kind  %>
-						<label class="active" for="kind">Tipo</label>
+						<%= f.search_field :cost_lt  %>
+						<%= f.label :cost_lt, "Valor Menor Que" %>
 					</div>
 				</div>
 				<div class="col s12 m6 l3">
 					<div class="input-field">
-						<%= f.text_field :min, id: "min", name: :min, value: 0  %>
-						<label class="active" for="min">Valor Mínimo</label>
+						<%= f.search_field :cost_gt  %>
+						<%= f.label :cost_gt, "Valor Maior Que" %>
 					</div>
 				</div>
-				<div class="col s12 m6 l3">
-					<div class="input-field">
-						<%= f.text_field :max, id: "max", name: :max, value: 9999999  %>
-						<label class="active" for="max">Valor Máximo</label>
-					</div>
-				</div>
+			</div>
+			<div class="row">
 				<div class="col s12 m12 l12">
-					<div class="action  ">
-						<button type="submit" class="btn shadow blue right">Buscar</button>
-					</div>
+					<%= f.submit 'buscar', :class => 'btn shadow blue right', :id => "buscar" %>
 				</div>
 			</div>
 		<% end %>

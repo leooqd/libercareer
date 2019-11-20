@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_215447) do
     t.string "number", default: "", null: false
     t.date "expiration", null: false
     t.bigint "person_id", null: false
-    t.json "modalities_ids", default: []
+    t.integer "modalities_ids", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_licenses_on_person_id"

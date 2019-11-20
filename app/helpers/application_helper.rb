@@ -10,7 +10,7 @@ module ApplicationHelper
 	end
 	def custom_date date
 		begin
-			l date.to_date, format: :short
+			l date.to_date, format: :default
 		rescue 
 			date
 		end
@@ -29,5 +29,22 @@ module ApplicationHelper
 	def get_cost start_date, end_date, automobile_cost
 		days = end_date-start_date
 		automobile_cost*days
+	end
+	def status(rent)
+		begin
+			if rent.return_date.present?
+				"<i class='green-text'>Finalizado</i>".html_safe
+			elsif rent.pickup_date.blank? and Date.today<rent.end_date
+				"<i class='blue-text'>Aguardando retirada</i>".html_safe
+			elsif rent.pickup_date.blank? and Date.today>rent.end_date
+				"<i class='red-text'>Pedido Vencido</i>".html_safe
+			elsif Date.today>rent.end_date
+				"<i class='red-text'>#{pluralize((Date.today-rent.end_date).to_i, 'dia atrasado', 'dias atrasados')}</i>".html_safe
+			else
+				"<i class='orange-text'>Em Andamento</i>".html_safe
+			end
+		rescue
+			
+		end
 	end
 end

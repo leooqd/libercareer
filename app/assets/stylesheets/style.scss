@@ -1,5 +1,9 @@
 $liber-color: #019DFF;
 
+table{
+	color: #444;
+}
+
 nav{
 	background-color: $liber-color;
 	a{
@@ -7,6 +11,9 @@ nav{
 			text-shadow: 0 0 10px white;
 		}
 	}
+}
+.grafit-text{
+	color: #555;
 }
 .liber-color{
 	background-color: $liber-color;

@@ -4,7 +4,7 @@ class CreateLicenses < ActiveRecord::Migration[5.2]
     	t.string 					:number, null: false, default: ""
     	t.date 						:expiration, null: false, default: ""
     	t.references 			:person, index: true, null: false
-    	t.json 						:modalities_ids, default: []
+    	t.integer 						:modalities_ids, array: true, default: []
       t.timestamps
     end
   end

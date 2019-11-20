@@ -3,14 +3,8 @@ class AutomobilesController < ApplicationController
 	before_action :set_automobile, only: [:show, :edit, :update, :destroy]
 
 	def index
-		conditions = []
-		conditions << "UPPER(unaccent(automobiles.model)) LIKE '%#{I18n.transliterate(params[:model].upcase)}%'" unless params[:model].blank?
-		conditions << "UPPER(unaccent(automobiles.kind)) LIKE '%#{I18n.transliterate(params[:kind].upcase)}%'" unless params[:kind].blank?
-		conditions << "UPPER(unaccent(automobiles.color)) LIKE '%#{I18n.transliterate(params[:color].upcase)}%'" unless params[:color].blank?
-		conditions << "UPPER(unaccent(automobiles.license_plate)) LIKE '%#{I18n.transliterate(params[:license_plate].upcase)}%'" unless params[:license_plate].blank?
-		conditions << "(automobiles.cost BETWEEN #{params[:min]} AND #{params[:max]})" unless params[:min].blank? or params[:max].blank? 
-		conditions << "automobiles.id = #{params[:codigo]}" unless params[:codigo].blank?
-		@automobiles = Automobile.where(conditions.join(" AND ")).ordered
+		@q = Automobile.ransack(params[:q])
+		@automobiles = @q.result
 	end
 
 	def edit

@@ -2,9 +2,8 @@ class RentsController < ApplicationController
 	before_action :set_rent, only: [:show, :edit, :update, :destroy, :pickup_car, :return_car]
 
 	def index
-		conditions = []
-		conditions << "rents.id = #{params[:codigo]}" unless params[:codigo].blank?
-		@rents = Rent.where(conditions.join(" AND ")).ordered
+		@q = Rent.ransack(params[:q])
+		@rents = @q.result
 	end
 
 	def edit
