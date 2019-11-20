@@ -25,7 +25,6 @@ services:
     volumes:
       - .:/libercareer
       - gems:/gems
- 
 
 volumes:
   redis:
