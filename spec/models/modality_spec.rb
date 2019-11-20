@@ -3,5 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe Modality, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'is valid' do
+    modality = create(:modality)
+    expect(modality).to be_valid
+  end
+  it 'is not valid without number' do
+    modality = build(:modality, category: nil)
+    expect(modality).to_not be_valid
+  end
 end

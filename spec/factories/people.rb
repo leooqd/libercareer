@@ -6,6 +6,6 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     email { Faker::Internet.email }
     document { CPF.generate(true) }
-    birth_date { Faker::Date.birthday(min_age: 21, max_age: 65) }
+    birth_date { Faker::Date.birthday(min_age: 22, max_age: 65) }
   end
 end

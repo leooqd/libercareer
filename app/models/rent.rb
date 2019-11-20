@@ -41,28 +41,28 @@ class Rent < ApplicationRecord
     if person.present? && (person&.age <= 21)
       errors.add(:erro, '~> idade insuficiente para alugar qualquer automóvel.')
     end
-    if automobile&.motorcycle? && person.license.modalities_ids.exclude?(1)
+    if automobile&.motorcycle? && person.license&.modalities_ids&.exclude?(1)
       errors.add(:erro, '~> cliente não possui habilitação de moto.')
     end
-    if (automobile&.car? || automobile&.vuc?) && person.license.modalities_ids.exclude?(2)
+    if (automobile&.car? || automobile&.vuc?) && person.license&.modalities_ids&.exclude?(2)
       errors.add(:erro, '~> cliente não possui habilitação de carro/vuc')
     end
     if automobile&.bus? && (person&.age <= 40)
       errors.add(:erro, '~> idade insuficiente para alugar ônibus.')
     end
-    if automobile&.bus? && person.license.modalities_ids.exclude?(4)
+    if automobile&.bus? && person.license&.modalities_ids&.exclude?(4)
       errors.add(:erro, '~> cliente não possui habilitação de ônibus.')
     end
     if automobile&.truck? && (person&.age <= 60)
       errors.add(:erro, '~> idade insuficiente para alugar caminhão.')
     end
-    if automobile&.truck? && person.license.modalities_ids.exclude?(3)
+    if automobile&.truck? && person.license&.modalities_ids&.exclude?(3)
       errors.add(:erro, '~> cliente não possui habilitação de caminhão.')
     end
     if end_date.present? && start_date.present? && (((end_date.to_time - start_date.to_time) / 1.day.seconds).floor >= 4) && (person&.rents&.completeds&.count.to_i < 2)
       errors.add(:erro, '~> tempo de locação muito longa.')
     end
-    if person.license.expired?
+    if person&.license&.expired?
       errors.add(:erro, '~> Habilitação está expirada.')
     end
     if start_date.present? && start_date.to_time.wednesday? && (automobile.license_plate[-1] == '4')
@@ -71,5 +71,6 @@ class Rent < ApplicationRecord
     if automobile.present? && automobile.rents.where(return_date: nil).any?
       errors.add(:erro, '~> Este automóvel já está alugado.')
     end
+    errors&.any?
   end
 end

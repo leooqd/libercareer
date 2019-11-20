@@ -10,7 +10,7 @@ class Automobile < ApplicationRecord
   scope :ordered, -> { order('automobiles.created_at desc') }
 
   def full_description
-    "#{kind} #{model} #{year} (#{color}) - #{license_plate}"
+    "#{kind} #{model} (#{color}) - #{license_plate}"
   end
 
   def self.kind_to_select
