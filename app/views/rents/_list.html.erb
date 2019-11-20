@@ -1,22 +1,22 @@
 <div class="right">
-	<strong class="grafit-text f20">Custo Total: </strong>
-	<span class="green-text f20"><%= @rents.sum("cost") %></span>
+  <strong class="grafit-text f20">Custo Total: </strong>
+  <span class="green-text f20"><%= @rents.sum("cost") %></span>
 </div>
 <table class="striped responsive-table f12">
-	<thead>
-		<tr>
-			<th>Cliente</th>
-			<th>Automóvel</th>
-			<th>Início</th>
-			<th>Fim</th>
-			<th>Retirada</th>
-			<th>Entrega</th>
-			<th><%= sort_link @q, :cost, "Custo", {}, { :remote => true } %></th>
-			<th>Status</th>
-			<th>#</th>
-		</tr>
-	</thead>
-	<tbody>
-		<%= render @rents %>
-	</tbody>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Automóvel</th>
+      <th>Início</th>
+      <th>Fim</th>
+      <th>Retirada</th>
+      <th>Entrega</th>
+      <th><%= sort_link @q, :cost, "Custo", {}, { :remote => true } %></th>
+      <th>Status</th>
+      <th>#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @rents %>
+  </tbody>
 </table>

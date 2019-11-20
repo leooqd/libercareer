@@ -1,8 +1,8 @@
 <% if @rent.errors.any? %>
-	<% @rent.errors.full_messages.each do |msg| %>
-		M.toast({html: '<%= msg %>', classes: 'red'});
-	<% end %>
+  <% @rent.errors.full_messages.each do |msg| %>
+    M.toast({html: '<%= msg %>', classes: 'red'});
+  <% end %>
 <% else %>
-	M.toast({html: 'Atualizado!', classes: 'green'});
-	$("#buscar").trigger("click");
+  M.toast({html: 'Atualizado!', classes: 'green'});
+  $("#buscar").trigger("click");
 <% end %>

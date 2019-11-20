@@ -1,25 +1,25 @@
 <tr>
-	<td>
-		<%= person.full_name %>
-	</td>
-	<td>
-		<%= person.document %>
-	</td>
-	<td>
-		<%= person.birth_date %>
-	</td>
-	<td>
-		<%= person.email %>
-	</td>
-	<td>
-		<%= person.preferred_phone&.full_number %>
-	</td>
-	<td>
-		<%= person_license_valid(person) %>
-	</td>
-	<td>
-		<%= link_to edit_person_path(person) do %>
-			<i class="material-icons f20">edit</i>
-		<% end %>
-	</td>
+  <td>
+    <%= person.full_name %>
+  </td>
+  <td>
+    <%= person.document %>
+  </td>
+  <td>
+    <%= person.birth_date %>
+  </td>
+  <td>
+    <%= person.email %>
+  </td>
+  <td>
+    <%= person.preferred_phone&.full_number %>
+  </td>
+  <td>
+    <%= person_license_valid(person) %>
+  </td>
+  <td>
+    <%= link_to edit_person_path(person) do %>
+      <i class="material-icons f20">edit</i>
+    <% end %>
+  </td>
 </tr>

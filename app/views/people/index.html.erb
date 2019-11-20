@@ -1,67 +1,67 @@
 <div class="card">
-	<div class="card-content">
-		<%= search_form_for @q, remote: true do |f| %>
-			<div class="row">
-				<div class="col s12 m6 l3">
-					<div class="input-field">
-						<%= f.search_field :id_eq  %>
-						<%= f.label :id_eq, "Código" %>
-					</div>
-				</div>
-				<div class="col s12 m6 l3">
-					<div class="input-field">
-						<%= f.search_field :name_or_last_name_cont  %>
-						<%= f.label :name_or_last_name_cont, "Nome" %>
-					</div>
-				</div>
-				<div class="col s12 m6 l3">
-					<div class="input-field">
-						<%= f.search_field :email_cont  %>
-						<%= f.label :email_cont, "E-mail" %>
-					</div>
-				</div>
-				<div class="col s12 m6 l3">
-					<div class="input-field">
-						<%= f.search_field :document_cont  %>
-						<%= f.label :document_cont, "Document" %>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col s12 m12 l3">
-					<div class="input-field">
-						<%= f.search_field :age_lteq  %>
-						<%= f.label :age_lteq, "Idade maior que" %>
-					</div>
-				</div>
-				<div class="col s12 m12 l3">
-					<div class="input-field">
-						<%= f.select :loyal_eq, [["Selecione", ''], ["Fidelizado", true], ["Não fidelizado", false]] %> 
-						<%= f.label :loyal_eq, "Fidelizado" %>
-					</div>
-				</div>
-				<div class="col s12 m6 l3">
-					<%= f.fields_for :license do |l| %>
-						<div class="input-field">
-							<%= l.collection_select :modalities_ids, Modality.all, :id, :category, {:include_hidden => true}, {multiple: true} %>
-							<%= l.label :modalities_ids, "Modalidades" %>
-						</div>
-					<% end %>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col s12 m12 l12">
-					<%= f.submit 'buscar', :class => 'btn shadow blue right', :id => "buscar" %>
-				</div>
-			</div>
-		<% end %>
-	</div>
+  <div class="card-content">
+    <%= search_form_for @q, remote: true do |f| %>
+      <div class="row">
+        <div class="col s12 m6 l3">
+          <div class="input-field">
+            <%= f.search_field :id_eq  %>
+            <%= f.label :id_eq, "Código" %>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="input-field">
+            <%= f.search_field :name_or_last_name_cont  %>
+            <%= f.label :name_or_last_name_cont, "Nome" %>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="input-field">
+            <%= f.search_field :email_cont  %>
+            <%= f.label :email_cont, "E-mail" %>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="input-field">
+            <%= f.search_field :document_cont  %>
+            <%= f.label :document_cont, "Document" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l3">
+          <div class="input-field">
+            <%= f.search_field :age_lteq  %>
+            <%= f.label :age_lteq, "Idade maior que" %>
+          </div>
+        </div>
+        <div class="col s12 m12 l3">
+          <div class="input-field">
+            <%= f.select :loyal_eq, [["Selecione", ''], ["Fidelizado", true], ["Não fidelizado", false]] %> 
+            <%= f.label :loyal_eq, "Fidelizado" %>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <%= f.fields_for :license do |l| %>
+            <div class="input-field">
+              <%= l.collection_select :modalities_ids, Modality.all, :id, :category, {:include_hidden => true}, {multiple: true} %>
+              <%= l.label :modalities_ids, "Modalidades" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <%= f.submit 'buscar', :class => 'btn shadow blue right', :id => "buscar" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 <div class="card">
-	<div class="card-content">
-		<%= link_to "Novo", new_person_path, class: "btn green" %>
-		<div id="people_list">
-			<%= render "list" %>
-		</div>
-	</div>
+  <div class="card-content">
+    <%= link_to "Novo", new_person_path, class: "btn green" %>
+    <div id="people_list">
+      <%= render "list" %>
+    </div>
+  </div>
 </div>

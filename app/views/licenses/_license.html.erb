@@ -1,21 +1,21 @@
 <tr>
-	<td>
-		<%= license.number %>
-	</td>
-	<td>
-		<%= license.person.full_name %>
-	</td>
-	<td>
-		<% license.modalities.each do |modality| %>
-			<%= modality.category %>
-		<% end %>
-	</td>
-	<td>
-		<%= license.expiration %>
-	</td>
-	<td>
-		<%= link_to edit_license_path(license) do %>
-			<i class="material-icons f20">edit</i>
-		<% end %>
-	</td>
+  <td>
+    <%= license.number %>
+  </td>
+  <td>
+    <%= license.person.full_name %>
+  </td>
+  <td>
+    <% license.modalities.each do |modality| %>
+      <%= modality.category %>
+    <% end %>
+  </td>
+  <td>
+    <%= license.expiration %>
+  </td>
+  <td>
+    <%= link_to edit_license_path(license) do %>
+      <i class="material-icons f20">edit</i>
+    <% end %>
+  </td>
 </tr>

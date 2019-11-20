@@ -1,25 +1,25 @@
 <tr>
-	<td>
-		<%= automobile.color %>
-	</td>
-	<td>
-		<%= automobile.model %>
-	</td>
-	<td>
-		<%= automobile.year %>
-	</td>
-	<td>
-		<%= automobile.license_plate %>
-	</td>
-	<td>
-		<%= I18n.t("automobile.kind.#{automobile.kind}") %>
-	</td>
-	<td>
-		<%= automobile.cost %>
-	</td>
-	<td>
-		<%= link_to edit_automobile_path(automobile) do %>
-			<i class="material-icons f20">edit</i>
-		<% end %>
-	</td>
+  <td>
+    <%= automobile.color %>
+  </td>
+  <td>
+    <%= automobile.model %>
+  </td>
+  <td>
+    <%= automobile.year %>
+  </td>
+  <td>
+    <%= automobile.license_plate %>
+  </td>
+  <td>
+    <%= I18n.t("automobile.kind.#{automobile.kind}") %>
+  </td>
+  <td>
+    <%= automobile.cost %>
+  </td>
+  <td>
+    <%= link_to edit_automobile_path(automobile) do %>
+    <i class="material-icons f20">edit</i>
+    <% end %>
+  </td>
 </tr>

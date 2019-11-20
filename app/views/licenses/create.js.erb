@@ -1,7 +1,7 @@
 <% if @license.errors.any? %>
-	<% @license.errors.full_messages.each do |msg| %>
-		M.toast({html: '<%= msg %>', classes: 'red'});
-	<% end %>
+  <% @license.errors.full_messages.each do |msg| %>
+    M.toast({html: '<%= msg %>', classes: 'red'});
+  <% end %>
 <% else %>
-	M.toast({html: 'Criado!', classes: 'green'});
+  M.toast({html: 'Criado!', classes: 'green'});
 <% end %>
