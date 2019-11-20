@@ -11,7 +11,7 @@
 			<th>Fim</th>
 			<th>Retirada</th>
 			<th>Entrega</th>
-			<th>Custo</th>
+			<th><%= sort_link @q, :cost, "Custo", {}, { :remote => true } %></th>
 			<th>Status</th>
 			<th>#</th>
 		</tr>

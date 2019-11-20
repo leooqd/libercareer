@@ -17,8 +17,8 @@
 			<label for="automobile_license_plate">Placa</label>
 		</div>
 		<div class="input-field col s12 m6 l4">
-			<%= f.text_field :kind %>
-			<label for="automobile_kind">Tipo</label>
+			<%= f.collection_select :kind, Automobile.kind_to_select, "last", "first", { prompt: "Selecione" } %>
+			<%= f.label :kind, "Tipo" %>
 		</div>
 		<div class="input-field col s12 m6 l4">
 			<%= f.text_field :cost %>

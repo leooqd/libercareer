@@ -34,6 +34,12 @@
 						<%= f.label :age_lteq, "Idade maior que" %>
 					</div>
 				</div>
+				<div class="col s12 m12 l3">
+					<div class="input-field">
+						<%= f.select :loyal_eq, [["Selecione", ''], ["Fidelizado", true], ["Não fidelizado", false]] %> 
+						<%= f.label :loyal_eq, "Fidelizado" %>
+					</div>
+				</div>
 				<div class="col s12 m6 l3">
 					<%= f.fields_for :license do |l| %>
 						<div class="input-field">

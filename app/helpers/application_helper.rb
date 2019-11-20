@@ -17,7 +17,7 @@ module ApplicationHelper
 	end
 	def person_license_valid person
 		begin
-			if person.blank? or person.license.blank? or person.license.expiration.to_date < Date.today
+			if person.blank? or person.license.blank? or person.license.expired?
 				"<i class='material-icons red-text f20'>close</i>".html_safe
 			else
 				"<i class='material-icons green-text f20'>check</i>".html_safe
@@ -25,10 +25,6 @@ module ApplicationHelper
 		rescue
 			"<i class='material-icons red-text f20'>close</i>".html_safe
 		end
-	end
-	def get_cost start_date, end_date, automobile_cost
-		days = end_date-start_date
-		automobile_cost*days
 	end
 	def status(rent)
 		begin

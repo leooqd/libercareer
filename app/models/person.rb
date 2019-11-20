@@ -3,7 +3,7 @@ class Person < ApplicationRecord
 	belongs_to :preferred_phone, :class_name => "Phone", optional: true
 	has_many :phones, dependent: :destroy
 	accepts_nested_attributes_for :phones,  allow_destroy: true
-
+	has_many :rents
 	has_one :license, dependent: :destroy
 	accepts_nested_attributes_for :license
 
@@ -34,5 +34,9 @@ class Person < ApplicationRecord
 
 	def set_preferred!phone_id
 		self.update(preferred_phone_id: phone_id)
+	end
+
+	def age
+		((Time.zone.now - self.birth_date.to_time) / 1.year.seconds).floor
 	end
 end

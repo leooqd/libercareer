@@ -13,4 +13,8 @@ class License < ApplicationRecord
 		Modality.where(id: self.modalities_ids)
 	end
 
+	def expired?
+		self.expiration.to_date < Date.today
+	end
+
 end

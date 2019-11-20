@@ -6,6 +6,11 @@
 		<%= license.person.full_name %>
 	</td>
 	<td>
+		<% license.modalities.each do |modality| %>
+			<%= modality.category %>
+		<% end %>
+	</td>
+	<td>
 		<%= license.expiration %>
 	</td>
 	<td>

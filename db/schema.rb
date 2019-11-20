@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_215447) do
     t.string "model", default: "", null: false
     t.string "year"
     t.string "license_plate", default: "", null: false
-    t.string "kind", default: "", null: false
+    t.integer "kind", default: 0, null: false
     t.decimal "cost", default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_215447) do
     t.string "document", default: "", null: false
     t.string "email", default: "", null: false
     t.date "birth_date", null: false
+    t.boolean "loyal", default: false, null: false
     t.bigint "preferred_phone_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

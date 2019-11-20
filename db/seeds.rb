@@ -21,11 +21,11 @@ Person.all.each do |person|
 	person.set_preferred_phone
 end
 puts "Preferenciais atualizados".green
-Automobile.create(model: "CB 300", color: "vermelho", kind: "moto", license_plate: "AHD-5454", cost: 99.99)
-Automobile.create(model: "HB 300", color: "preto", kind: "carro", license_plate: "FMR-6345", cost: 139.99)
-Automobile.create(model: "Agrale 6500", color: "prata", kind: "VUC", license_plate: "RGH-4245", cost: 199.99)
-Automobile.create(model: "Millennium III", color: "azul", kind: "ônibus", license_plate: "BTF-5278", cost: 279.99)
-Automobile.create(model: "Atego 2425", color: "branco", kind: "caminhão", license_plate: "BYT-2354", cost: 409.99)
+Automobile.create(model: "CB 300", color: "vermelho", kind: 1, license_plate: "AHD-5454", cost: 99.99)
+Automobile.create(model: "HB 300", color: "preto", kind: 0, license_plate: "FMR-6345", cost: 139.99)
+Automobile.create(model: "Agrale 6500", color: "prata", kind: 2, license_plate: "RGH-4245", cost: 199.99)
+Automobile.create(model: "Millennium III", color: "azul", kind: 4, license_plate: "BTF-5278", cost: 279.99)
+Automobile.create(model: "Atego 2425", color: "branco", kind: 3, license_plate: "BYT-2354", cost: 409.99)
 puts "#{Automobile.count} Automóveis cadastrados".green
 Modality.create(category: "Categoria A", description: "Veículo motorizado de duas ou três rodas, com ou sem carro lateral. Ex.: Motocicleta, Ciclomotor, Motoneta ou Triciclo;")
 Modality.create(category: "Categoria B", description: "Veículos cujo peso bruto total não exceda a 3500 kg ou cuja lotação não exceda 8 lugares, excluído o do motorista. Ex.: Automóvel, caminhonete, camioneta, utilitário.")
