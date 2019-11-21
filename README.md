@@ -6,7 +6,7 @@
 2. Ruby 2.5.1
 3. Rails 5.2.3
 4. Redis
-6. Docker
+5. Docker
 
 ## Instalação
 
@@ -15,12 +15,12 @@ Se for executar fora do container, precisa ajustar as configurações para o Pos
 #### Docker
 
 Crie as imagens
-`docker-compose build
+`docker-compose build`
 
 Instale as gems  
 `docker-compose run --rm app bundle install`
 
-Crie o banco e rode as migrações 
+Crie o banco e rode as migrações
 `docker-compose run --rm app bundle exec rails db:create db:migrate db:seed`
 
 Para executar os testes

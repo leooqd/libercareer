@@ -53,3 +53,11 @@ nav{
 .f20{
 	font-size: 20px;
 }
+
+.btn{
+	&.small{
+		height: auto;
+		padding: 5px;
+		line-height: 1;
+	}
+}
